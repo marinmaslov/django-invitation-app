@@ -7,7 +7,15 @@
   <title>Invitations App</title>
 </head>
 <body>
-  {% include 'guests/templates/slug.html' %}
-  {% include 'guests/templates/invitation.html' %}
+  <div>
+    <form method="post">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <div>
+    {% include 'guests/templates/invitation.html' %}
+  </div>
 </body>
 </html>
