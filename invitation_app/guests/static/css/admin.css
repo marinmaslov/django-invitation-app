@@ -1,0 +1,87 @@
+body{
+    background:#f9f9f9;
+}
+
+section {
+    max-width:900px;
+    margin: 20px auto;
+}
+
+.invite {
+    background: #fff;
+    margin: 20px;
+    font-family:'Quicksand', sans-serif;
+    box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.2);
+}
+
+.invite-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.invite-controls{
+    text-align: left;
+}
+
+.invite-guest{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    width: 60%;
+    background: #fff;
+}
+
+.invite-guest-info{
+    color:#4e4848;
+}
+
+.invite-guest-info h2{
+    font-size:1.4em;
+    text-transform: uppercase;
+}
+
+.invite-guest-info p{
+    font-size:.8em;
+}
+
+.invite-escort-container{
+    display: flex;
+    flex-direction: column;    
+}
+
+.invite-escort {
+    display:flex;
+    flex-direction: row;
+    padding:20px;
+    background: #f3eaea;
+}
+
+.invite-escort:nth-child(2n) {
+    background: #ececec;
+}
+
+.invite-escort div {
+    width: 33.33%;
+}
+
+.invite-escort p, h4 {
+    margin: 0;
+}
+
+
+
+
+.invite .invite-info {
+    background: #f78888;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+    flex-direction: column;
+    width: 40%;
+    text-align:center;
+}
+
+.invite .invite-info p {
+    margin: 0;
+}

@@ -1,0 +1,23 @@
+
+
+/* INVITATION POST FORM */
+.post-form {
+    width: 500px;
+    margin: 20px auto;
+    text-align: center;
+}
+/* Adding lines under charachters on slug input */
+.post-form input[type="text"] {
+    border: none;
+    width: 433px;
+    background: repeating-linear-gradient(90deg, dimgrey 0, dimgrey 1ch, transparent 0, transparent 2.5ch) 0 100%/99% 3px no-repeat;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 4.8ch;
+    letter-spacing: 1.5ch;
+    margin-left: 1.5ch;
+  }
+  
+  .post-form input:focus {
+    outline: none;
+    color: dodgerblue;
+  }

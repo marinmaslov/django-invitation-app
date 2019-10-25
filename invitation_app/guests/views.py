@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import View, TemplateView
 
-from guests.models import Invitation, Guest
-from .forms import SlugForm
+from guests.models import Invitation, Guest, Escort
+from .forms import SlugForm, NewInvitation, NewInvitationEscort
 
 
 '''
@@ -50,3 +50,41 @@ class GuestView(View):
                     'guest': guest
                 }
                 return render(request, 'guests/templates/invitation.html', context)
+
+
+class AdminView(TemplateView):
+    template_name = "admin/admin.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(AdminView, self).get_context_data(**kwargs)
+        context['invitations'] = Invitation.objects.all()
+        context['guests'] = Guest.objects.all()
+        context['escorts'] = Escort.objects.all()
+        return context
+
+    @staticmethod
+    def post(request):
+        action = request.POST.get('action', '')
+
+        if action == "createNewInvitation":
+            form = NewInvitation()
+            return render(request, 'admin/new_invitation.html', {'form': form})
+
+    """ def post(request):
+        if request.method == 'POST':
+            form = NewInvitation(request.POST)
+            if form.is_valid():
+                #uzmi stvari iz forme i strpaj ih u bazu (u Invitation i u Guest)
+
+                slug = form.cleaned_data['slug']
+                invitation = Invitation.objects.filter(slug=slug).first()
+                guest = Guest.objects.filter(invitation = invitation.id).first()
+                context = {
+                    'slug': invitation.slug,
+                    'created': invitation.created,
+                    'confirmed': invitation.confirmed,
+                    'isFamily': invitation.isFamily,
+                    'guest': guest
+                }
+                return render(request, 'guests/templates/invitation.html', context)
+    """

@@ -1,21 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Invitations App</title>
-</head>
-<body>
-  <div>
+{% extends 'templates/base.html' %}
+{% load staticfiles %}
+{% block extra_head %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/main.css' %}"/>
+<script src="{% static 'js/main.js' %}"></script>
+
+
+<link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+{% endblock %}
+{% block main_content %}
+  <div class="post-form">
     <form method="post">
       {% csrf_token %}
-      {{ form }}
-      <button type="submit">Submit</button>
+      {{ form.as_p }}
+      <button type="submit" value="Submit" id="submit">Submit</button>
     </form>
   </div>
-  <div>
-    {% include 'guests/templates/invitation.html' %}
-  </div>
-</body>
-</html>
+  {% block invitation_content %}
+  {% endblock %}
+{% endblock %}

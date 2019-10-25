@@ -1,0 +1,7 @@
+{% block new_invitation %}
+<form class="create-invitation" method="post" style="display:none;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" value="Submit" id="submit">Submit</button>
+</form>
+{% endblock %}
