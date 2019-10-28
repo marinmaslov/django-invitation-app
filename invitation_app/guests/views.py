@@ -2,8 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import View, TemplateView
 
+from django.utils.crypto import get_random_string
+import datetime
+
 from guests.models import Invitation, Guest, Escort
-from .forms import SlugForm, NewInvitation, NewInvitationEscort
+from .forms import SlugForm, NewInvitation
 
 
 '''
@@ -70,21 +73,18 @@ class AdminView(TemplateView):
             form = NewInvitation()
             return render(request, 'admin/new_invitation.html', {'form': form})
 
-    """ def post(request):
-        if request.method == 'POST':
+        elif action == "subminInvitation":
+            print("KAKAO: "+request)
             form = NewInvitation(request.POST)
             if form.is_valid():
-                #uzmi stvari iz forme i strpaj ih u bazu (u Invitation i u Guest)
-
-                slug = form.cleaned_data['slug']
-                invitation = Invitation.objects.filter(slug=slug).first()
-                guest = Guest.objects.filter(invitation = invitation.id).first()
-                context = {
-                    'slug': invitation.slug,
-                    'created': invitation.created,
-                    'confirmed': invitation.confirmed,
-                    'isFamily': invitation.isFamily,
-                    'guest': guest
-                }
-                return render(request, 'guests/templates/invitation.html', context)
-    """
+                name = form.cleaned_data['name']
+                surname = form.cleaned_data['surname']
+                phone = form.cleaned_data['phone']
+                email = form.cleaned_data['email']
+                isFamily = form.cleaned_data['isFamily']
+                invitation = Invitation(slug=get_random_string(length=8), created=datetime.datetime.now(), confirmed=False, isFamily=isFamily)
+                print("KAKAO: "+invitation)
+                invitation.save()
+                guest = Guest(name=name, surname=surname, phone=phone, email=email, invitation_id=invitation.id)
+                guest.save()
+                return "MRKVA"

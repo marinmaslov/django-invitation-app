@@ -1,7 +1,28 @@
 {% block new_invitation %}
 <form class="create-invitation" method="post" style="display:none;">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" value="Submit" id="submit">Submit</button>
+    <div class="invitation guest create-invitation">
+        <div class="element first">
+            {{ form.isFamily }}
+                <p><i class="fas fa-users"></i></p>
+                <p><i class="fas fa-user"></i></p>
+        </div>
+        <div class="element">
+            {% now "d.m.Y." %} <br>
+            New invitation
+        </div>
+        <div class="element">
+            {{ form.name }} <br>
+            {{ form.surname }}
+        </div>
+        <div class="element">
+            {{ form.email }} 
+            {{ form.phone }}
+        </div>
+        <div class="element last">
+            <a onclick="cancelNewInvitation()"><i class="fas fa-times"></i></a>
+            <input type="submit" value="Submit" id="submit" onclick="submitInvitation()"><i class="fas fa-arrow-right"></i></input>
+        </div>
+    </div>
 </form>
 {% endblock %}

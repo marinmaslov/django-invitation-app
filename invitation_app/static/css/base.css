@@ -4,13 +4,18 @@
 
 }
 
+:focus {
+    outline: none;
+}
+
 html {
     height: 100%;
 }
 
 body {
     margin: 0;
-    font-family:Garamond;
+    font-family: "Roboto", sans-serif;
+    background:#F2F5FA;
 }
 
 #loading {
@@ -27,11 +32,27 @@ body {
 }
 
 header {
-    background: var(--main-pink);
+    background: #fff;
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    color: var(--white);
+    color: #6b6e73;
+    border-bottom: 1px solid #cacaca;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .2);
+}
+
+header .logo {
+    display: flex;
+    justify-content: space-between;
+}
+
+header .logo h3 {
+    margin: 0;
+}
+
+header .account {
+    display: flex;
+    justify-content: space-between;
 }
 
 /*
@@ -40,9 +61,7 @@ header .menu {
 }
 */
 
-header .name {
-    margin: 0;
-}
+
 
 /*
 header .logo {

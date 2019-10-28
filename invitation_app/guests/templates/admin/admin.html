@@ -8,81 +8,95 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
 {% endblock %}
 {% block main_content %}
-    <section>
-        <div class="controls">
-            <button>Show more</button>
-            <button class="add" onclick="createNewInvitation()">Create new</button>
-            <button class="cancel" style="display:none;" onclick="cancelNewInvitation()">Cancel</button>
+
+    
+    <section id="admin-header">
+        <div class="admin-header-container">
+            <div>
+                <p>Board</p>
+            </div>
+            <div>
+                <p>Search</p>
+            </div>
+            <div>
+                <button class="add" onclick="createNewInvitation()">Create new</button>
+                <button class="cancel" style="display:none;" onclick="cancelNewInvitation()">Cancel</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="invitations">
+        
+
+
+        <div class="filters">
+            <div>
+                <p>SORT BY:</p>
+            </div>
+            <div>
+                <p>Date Created</p>
+                <p>Name</p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
         </div>   
-        <dic class="invitations">  
+
+
+        <div class="invitations-container">
             {% block new_invitation %}
             {% endblock %}
-            
-            
-            <!-- Invite -->
+
+            {% block success_message %}
+            {% endblock %}
+
+
             {% for invite in invitations %}
-                <div class="invite">
-                    
-                    {% for guest in guests %}
-                        {% if guest.invitation_id == invite.id %}
-                            <div class="invite-container">
-                                <div class="invite-guest">
-                                    <div class="invite-controls">
-                                        <i class="fas fa-file-pdf"></i>
-                                        <i class="fas fa-pen-square"></i>
-                                        <i class="fas fa-minus-square"></i>
-                                    </div>
-                                    <div class="invite-guest-info">
-                                        <h2>{{guest.name}} {{guest.surname}}</h2>
-                                        <p>{{guest.phone|format_phone_number}}</p>
-                                        <p>{{guest.email}}</p>
-                                    </div>
-                                </div>
-                                <div class="invite-info">
-                                    <p><i class="fas fa-key"></i>   {{invite.slug}}</p>
-                                    <p><i class="fas fa-calendar"></i>   {{invite.created|date:"d.m.Y."}}</p>
+                {% for guest in guests %}
+                    {% if guest.invitation_id == invite.id %}
+                            <div class="invitation guest">
+                                <div class="element first">
                                     {% if invite.confirmed %}
-                                        <p><i class="fas fa-check-circle"></i>   Confirmed</p>
+                                        <p><i class="fas fa-check"></i></p>
                                     {% else %}
-                                        <p><i class="fas fa-exclamation-circle"></i>   Waiting</p>
+                                        <p><i class="fas fa-exclamation-circle"></i></p>
                                     {% endif %}
-                                    {% if invite.isFamily %}
-                                        <p><i class="fas fa-users"></i>   Family</p>
-                                    {% else %}
-                                        <p><i class="fas fa-user"></i>   Not Family</p>
-                                    {% endif %}
-                                </div>
                                 
-                            </div>
-
-                            <div class="invite-escort-container">
-                                    {% for escort in escorts %}
-                                        {% if escort.guest_id == guest.id %}
-                                            <div class="invite-escort">
-                                                <div>
-                                                    <h4><i class="fas fa-user-circle"></i> {{escort.name}} {{escort.surname}}</h4>
-                                                </div>
-                                                <div>
-                                                    <p>{{escort.phone}}</p>
-                                                </div>
-                                                <div>
-                                                    <p>{{escort.email}}</p>
-                                                </div>
-                                            </div>
-                                        {% endif %}
-                                    {% endfor %}
+                                    {% if invite.isFamily %}
+                                        <p><i class="fas fa-users"></i></p>
+                                    {% else %}
+                                        <p><i class="fas fa-user"></i></p>
+                                    {% endif %}
                                 </div>
-                        {% endif %}
-                    {% endfor %}
-                    
-
-
-
-
-
-                </div>
+                                <div class="element">
+                                    <strong>{{invite.created|date:"d.m.Y."}}</strong><br>
+                                    No. {{invite.id}}
+                                </div>
+                                <div class="element">
+                                    <strong>{{guest.name}} {{guest.surname}}</strong><br>
+                                    {% if guest.id|has_escort %}
+                                        Has Escort
+                                    {% else %}
+                                        Has no Escort
+                                    {% endif %}
+                                </div>
+                                <div class="element">
+                                    {{guest.email}}<br>
+                                    {{guest.phone|format_phone_number}}
+                                </div>
+                                <div class="element last">
+                                    <p><i class="fas fa-file-pdf"></i></p>
+                                    <p><i class="fas fa-external-link-alt"></i></p>
+                                </div>
+                            </div>
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
-
         </div>
     <section>
 {% endblock %}
+
+
+
+
