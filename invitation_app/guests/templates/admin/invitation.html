@@ -1,0 +1,86 @@
+{% extends 'templates/base.html' %}
+{% load staticfiles %}
+{% load guests_tag_library %}
+{% block extra_head %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/admin/invitation.css' %}"/>
+<script src="{% static 'js/admin.js' %}"></script>
+
+
+<link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+{% endblock %}
+{% block main_content %}
+<section class="banner">
+  <div class="banner-background">
+    <div class="container">
+      <div class="guest">
+        <p>No. {{ invitation.id }} | Created: {{ invitation.created|date:"d.m.Y." }}</p>
+        <h2>{{ guest.name }} {{ guest.surname }}</h2>
+      </div>
+      <div class="info">
+        <div class="element">
+          <p><i class="fas fa-envelope circle-white"></i> {{ guest.email }}</p>
+        </div>
+        <div class="element">
+          <p><i class="fas fa-phone circle-white"></i> {{ guest.phone|format_phone_number }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="controls">
+  <div class="container">
+    <div class="info">
+      <div class="element">
+        {% if invite.confirmed %}
+          <i class="fas fa-check circle-amber"></i>
+          <p>Pending</p>
+        {% else %}
+          <i class="fas fa-check circle-green"></i>
+          <p>Confirmed</p>
+        {% endif %}
+      </div>
+      <div class="element">
+        {% if invite.confirmed %}
+          <<i class="fas fa-users circle-blue"></i>
+          <p>Is Family</p>
+        {% else %}
+          <i class="fas fa-user circle-purple"></i>
+          <p>Not Family</p>
+        {% endif %}
+      </div>
+      <div class="element slug" onclick="copyToClipBoard(this)">
+        <i class="fas fa-key circle-red"></i>
+        <p><textarea spellcheck="false">{{ invitation.slug }}</textarea></p>
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="btn-full">Export</button>
+      <button class="btn-full">Edit</button>
+      <button class="btn-empty">Delete</button>
+      
+    </div>
+  </div>
+</section>
+
+<section class="escorts">
+  <h2>Escorts</h2>
+  {% for escort in escorts %}
+    <div class="escort first escort_{{escort.id}}">
+      <div class="element">
+        <p class="name">{{ escort.name }} {{ escort.surname }}</p>
+      </div>
+      <div class="element">
+        <p class="email">{{ escort.email }}</p>
+      </div>
+      <div class="element">
+        <p class="phone">{{ escort.phone }}</p>
+      </div>
+      <div class="element last">
+          <a><i class="fas fa-pen circle-amber"></i></a>
+          <a><i class="fas fa-trash circle-red"></i></a>
+      </div>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}

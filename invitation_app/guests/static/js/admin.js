@@ -74,3 +74,16 @@ function getCSRFToken(){
         }
     }
 }
+
+
+/* COPY TO CLIPBOARD */
+function copyToClipBoard(e){
+    let string = e;
+    let element = string.childNodes[3].childNodes[0];
+    element.select();
+    document.execCommand('copy');
+
+    $('#message').fadeIn(500, function(){
+        $('#message').fadeOut(500);
+    });
+}

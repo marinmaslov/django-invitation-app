@@ -55,7 +55,7 @@
             {% for invite in invitations %}
                 {% for guest in guests %}
                     {% if guest.invitation_id == invite.id %}
-                            <div class="invitation guest">
+                            <div class="invitation guest guest_{{guest.id}}">
                                 <div class="element first">
                                     {% if invite.confirmed %}
                                         <p><i class="fas fa-check"></i></p>
@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="element last">
                                     <p><i class="fas fa-file-pdf"></i></p>
-                                    <p><i class="fas fa-external-link-alt"></i></p>
+                                    <a href="{% url 'invitation' %}{{ invite.id }}"><i class="fas fa-external-link-alt"></i></a>
                                 </div>
                             </div>
                     {% endif %}

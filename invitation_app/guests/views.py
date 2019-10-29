@@ -88,3 +88,32 @@ class AdminView(TemplateView):
                 guest = Guest(name=name, surname=surname, phone=phone, email=email, invitation_id=invitation.id)
                 guest.save()
                 return "MRKVA"
+
+
+
+class InvitationView(TemplateView):
+    template_name = "admin/invitation.html"
+
+    def get_context_data(self, **kwargs):
+
+        context = super(InvitationView, self).get_context_data(**kwargs)
+
+        # Cycle_id is a key. requested_cycle will be a value from key-value pair   
+        requested_invitation = kwargs["invitation_id"]
+        
+        
+        if requested_invitation is None:
+            # Order cycles by id and show first of the list
+            invitation = Invitation.objects.order_by('-id').first()
+        else:
+            # Filter cycles by id of the cycle requested and show first of the list 
+            invitation = Invitation.objects.filter(id=int(requested_invitation)).first()
+
+        context['invitation'] = invitation
+        guest = Guest.objects.filter(invitation_id=invitation.id).first()
+        context['guest'] = guest
+
+        # Upgrade Logical Area will be fetched by template (Key headers only)
+        context['escorts'] = Escort.objects.filter(guest_id=guest.id)
+
+        return context

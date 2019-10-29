@@ -68,3 +68,32 @@ header .logo {
 
 }
 */
+
+
+
+
+#message {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    display: none;
+}
+
+#message .box {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#message .box p {
+    padding: 30%;
+    font-size: 2em;
+    color: #6b6e73;
+    font-weight: bold;
+}
