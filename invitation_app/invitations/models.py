@@ -28,6 +28,7 @@ class Invitation(models.Model):
 class Escort(models.Model):
     name = models.CharField(default="", max_length=50)
     surname = models.CharField(default="", max_length=50)
+    # MOZDA BI CAK UKLONIA I OVAJ DIO
     phone = models.IntegerField(default="")
     email = models.EmailField(default="")
     invitation_id = models.ForeignKey(Invitation, on_delete=models.CASCADE)
