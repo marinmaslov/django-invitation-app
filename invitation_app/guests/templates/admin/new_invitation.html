@@ -1,7 +1,10 @@
 {% block new_invitation %}
 <form class="create-invitation" method="post" style="display:none;">
     {% csrf_token %}
-    <div class="invitation guest create-invitation">
+    {{ form.as_p }}
+    <button type="submit" value="Submit" id="submit">Submit</button>
+
+    {% comment %} <div class="invitation guest">
         <div class="element first">
             {{ form.isFamily }}
                 <p><i class="fas fa-users"></i></p>
@@ -23,6 +26,6 @@
             <a onclick="cancelNewInvitation()"><i class="fas fa-times"></i></a>
             <input type="submit" value="Submit" id="submit" onclick="submitInvitation()"><i class="fas fa-arrow-right"></i></input>
         </div>
-    </div>
+    </div> {% endcomment %}
 </form>
 {% endblock %}

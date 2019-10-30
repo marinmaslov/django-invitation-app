@@ -65,29 +65,42 @@ class AdminView(TemplateView):
         context['escorts'] = Escort.objects.all()
         return context
 
-    @staticmethod
-    def post(request):
+   
+    def post(self, request):
         action = request.POST.get('action', '')
+        
+        if action == "createNewInvitation":
+            form = NewInvitation()
+            return render(request, 'admin/new_invitation.html', {'form': form})
+
+        elif action == "submitInvitation":
+            form = NewInvitation(request.POST)
+            
+            return HttpResponse(render(request, 'admin/new_invitation.html', {'form': form}))
+
+        else:
+            return HttpResponse(status=400, content="No service available for action requested")
+
+
+        """ action = request.POST.get('action', '')
 
         if action == "createNewInvitation":
             form = NewInvitation()
             return render(request, 'admin/new_invitation.html', {'form': form})
 
-        elif action == "subminInvitation":
-            print("KAKAO: "+request)
+        elif action == "submitInvitation":
             form = NewInvitation(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['name']
                 surname = form.cleaned_data['surname']
-                phone = form.cleaned_data['phone']
+                phone = int(form.cleaned_data['phone'])
                 email = form.cleaned_data['email']
-                isFamily = form.cleaned_data['isFamily']
-                invitation = Invitation(slug=get_random_string(length=8), created=datetime.datetime.now(), confirmed=False, isFamily=isFamily)
-                print("KAKAO: "+invitation)
+                invitation = Invitation(slug=get_random_string(length=8), created=datetime.datetime.now(), confirmed=False)
                 invitation.save()
                 guest = Guest(name=name, surname=surname, phone=phone, email=email, invitation_id=invitation.id)
-                guest.save()
-                return "MRKVA"
+                guest.save() 
+        """
+
 
 
 

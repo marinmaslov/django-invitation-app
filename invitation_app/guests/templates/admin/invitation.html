@@ -32,7 +32,7 @@
   <div class="container">
     <div class="info">
       <div class="element">
-        {% if invite.confirmed %}
+        {% if invitation.confirmed %}
           <i class="fas fa-check circle-amber"></i>
           <p>Pending</p>
         {% else %}
@@ -41,8 +41,8 @@
         {% endif %}
       </div>
       <div class="element">
-        {% if invite.confirmed %}
-          <<i class="fas fa-users circle-blue"></i>
+        {% if invitation.isFamily %}
+          <i class="fas fa-users circle-blue"></i>
           <p>Is Family</p>
         {% else %}
           <i class="fas fa-user circle-purple"></i>

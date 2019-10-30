@@ -45,7 +45,7 @@ function submitInvitation() {
         method: 'POST',
         data: {
             csrfmiddlewaretoken: getCSRFToken(),
-            action: 'submitInvitation'
+            action: 'submitInvitation',
         },
         beforeSend: function(){
             // spinner fadeIn
@@ -63,6 +63,10 @@ function submitInvitation() {
         }
     });
 }
+
+
+
+
 
 /* CSRF TOKEN */
 function getCSRFToken(){
