@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'invitations',
-    'guests',
+    #'guests',
 ]
 
 MIDDLEWARE = [
@@ -100,6 +100,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+
+# url to redirect after successfull login
+LOGIN_REDIRECT_URL = '/admin/login/'
+#LOGIN_URL = '/admin/'
 
 
 # Internationalization

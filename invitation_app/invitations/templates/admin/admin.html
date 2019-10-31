@@ -1,6 +1,6 @@
 {% extends 'templates/base.html' %}
 {% load staticfiles %}
-{% load guests_tag_library %}
+{% load invitations_tag_library %}
 {% block extra_head %}
 <link type="text/css" rel="stylesheet" href="{% static 'css/admin.css' %}"/>
 <script src="{% static 'js/admin.js' %}"></script>
@@ -9,7 +9,7 @@
 {% endblock %}
 {% block main_content %}
 
-    
+
     <section id="admin-header">
         <div class="admin-header-container">
             <div>
@@ -26,7 +26,7 @@
     </section>
 
     <section id="invitations">
-        
+
 
 
         <div class="filters">
@@ -41,7 +41,7 @@
                 <p></p>
                 <p></p>
             </div>
-        </div>   
+        </div>
 
 
         <div class="invitations-container">
@@ -52,51 +52,43 @@
             {% endblock %}
 
 
-            {% for invite in invitations %}
-                {% for guest in guests %}
-                    {% if guest.invitation_id == invite.id %}
-                            <div class="invitation guest guest_{{guest.id}}">
+            {% for invitation in invitations %}
+                            <div class="invitation guest invitation_{{invitation.id}}">
                                 <div class="element first">
-                                    {% if invite.confirmed %}
+                                    {% if invitation.confirmed %}
                                         <p><i class="fas fa-check"></i></p>
                                     {% else %}
                                         <p><i class="fas fa-exclamation-circle"></i></p>
                                     {% endif %}
-                                
-                                    {% if invite.isFamily %}
+
+                                    {% if invitation.isFamily %}
                                         <p><i class="fas fa-users"></i></p>
                                     {% else %}
                                         <p><i class="fas fa-user"></i></p>
                                     {% endif %}
                                 </div>
                                 <div class="element">
-                                    <strong>{{invite.created|date:"d.m.Y."}}</strong><br>
-                                    No. {{invite.id}}
+                                    <strong>{{invitation.created|date:"d.m.Y."}}</strong><br>
+                                    No. {{invitation.id}}
                                 </div>
                                 <div class="element">
-                                    <strong>{{guest.name}} {{guest.surname}}</strong><br>
-                                    {% if guest.id|has_escort %}
+                                    <strong>{{invitation.name}} {{invitation.surname}}</strong><br>
+                                    {% if invitation.id|has_escort %}
                                         Has Escort
                                     {% else %}
                                         Has no Escort
                                     {% endif %}
                                 </div>
                                 <div class="element">
-                                    {{guest.email}}<br>
-                                    {{guest.phone|format_phone_number}}
+                                    {{invitation.email}}<br>
+                                    {{invitation.phone|format_phone_number}}
                                 </div>
                                 <div class="element last">
                                     <p><i class="fas fa-file-pdf"></i></p>
-                                    <a href="{% url 'invitation' %}{{ invite.id }}"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="{% url 'invitation' %}{{ invitation.id }}"><i class="fas fa-external-link-alt"></i></a>
                                 </div>
                             </div>
-                    {% endif %}
-                {% endfor %}
             {% endfor %}
         </div>
     <section>
 {% endblock %}
-
-
-
-

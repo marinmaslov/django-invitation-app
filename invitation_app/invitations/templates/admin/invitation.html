@@ -1,6 +1,6 @@
 {% extends 'templates/base.html' %}
 {% load staticfiles %}
-{% load guests_tag_library %}
+{% load invitations_tag_library %}
 {% block extra_head %}
 <link type="text/css" rel="stylesheet" href="{% static 'css/admin/invitation.css' %}"/>
 <script src="{% static 'js/admin.js' %}"></script>
@@ -14,14 +14,14 @@
     <div class="container">
       <div class="guest">
         <p>No. {{ invitation.id }} | Created: {{ invitation.created|date:"d.m.Y." }}</p>
-        <h2>{{ guest.name }} {{ guest.surname }}</h2>
+        <h2>{{ invitation.name }} {{ invitation.surname }}</h2>
       </div>
       <div class="info">
         <div class="element">
-          <p><i class="fas fa-envelope circle-white"></i> {{ guest.email }}</p>
+          <p><i class="fas fa-envelope circle-white"></i> {{ invitation.email }}</p>
         </div>
         <div class="element">
-          <p><i class="fas fa-phone circle-white"></i> {{ guest.phone|format_phone_number }}</p>
+          <p><i class="fas fa-phone circle-white"></i> {{ invitation.phone|format_phone_number }}</p>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@
       <button class="btn-full">Export</button>
       <button class="btn-full">Edit</button>
       <button class="btn-empty">Delete</button>
-      
+
     </div>
   </div>
 </section>
@@ -74,7 +74,7 @@
         <p class="email">{{ escort.email }}</p>
       </div>
       <div class="element">
-        <p class="phone">{{ escort.phone }}</p>
+        <p class="phone">{{ escort.phone|format_phone_number }}</p>
       </div>
       <div class="element last">
           <a><i class="fas fa-pen circle-amber"></i></a>

@@ -1,5 +1,5 @@
 from django import template
-from guests.models import Escort
+from invitations.models import Escort
 register = template.Library()
 
 @register.filter
@@ -16,7 +16,7 @@ def has_escort(value):
     escorts = Escort.objects.all()
     counter = 0
     for escort in escorts:
-        if escort.guest_id == value:
+        if escort.invitation_id == value:
             counter += 1
     if counter>0:
         return True
