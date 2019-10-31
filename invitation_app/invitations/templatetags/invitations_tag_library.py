@@ -18,7 +18,7 @@ def has_escort(value):
     for escort in escorts:
         if escort.invitation_id == value:
             counter += 1
-    if counter>0:
+    if counter > 0:
         return True
     else:
         return False

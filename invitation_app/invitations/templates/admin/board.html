@@ -61,7 +61,7 @@
                                         <p><i class="fas fa-exclamation-circle"></i></p>
                                     {% endif %}
 
-                                    {% if invitation.isFamily %}
+                                    {% if invitation.multiple_escort %}
                                         <p><i class="fas fa-users"></i></p>
                                     {% else %}
                                         <p><i class="fas fa-user"></i></p>
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="element">
                                     <strong>{{invitation.name}} {{invitation.surname}}</strong><br>
-                                    {% if invitation.id|has_escort %}
+                                    {% if invitation|has_escort %}
                                         Has Escort
                                     {% else %}
                                         Has no Escort

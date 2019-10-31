@@ -44,13 +44,13 @@ class MainView(View):
             if form.is_valid():
                 slug = form.cleaned_data['slug']
                 invitation = Invitation.objects.filter(slug=slug).first()
-                guest = Guest.objects.filter(invitation = invitation.id).first()
                 context = {
                     'slug': invitation.slug,
                     'created': invitation.created,
                     'confirmed': invitation.confirmed,
-                    'isFamily': invitation.isFamily,
-                    'guest': guest
+                    'multiple_escort': invitation.multiple_escort,
+                    'name': invitation.name,
+                    'surname': invitation.surname,
                 }
                 return render(request, 'invitations/templates/invitation.html', context)
 
@@ -111,9 +111,7 @@ class AdminBoardView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(AdminBoardView, self).get_context_data(**kwargs)
-        context['boards'] = Board.objects.all()
         context['invitations'] = Invitation.objects.all()
-        context['escorts'] = Escort.objects.all()
         return context
 
 
