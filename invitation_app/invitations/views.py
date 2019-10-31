@@ -57,6 +57,7 @@ class MainView(View):
 
 
 
+
 # NADOGRADITI TAKO DA IMA NEKAKVI DASHBOARD S BOARDOVIMA I INFORMACIJAMA I ONJIMA, KAO I INFORMACIJE O PROFILU TRENUTNOG KORISNIKA
 class AdminView(TemplateView):
     template_name = "admin/admin.html"
@@ -105,14 +106,39 @@ class AdminView(TemplateView):
         """
 
 
+class AdminBoardView(TemplateView):
+    template_name = "admin/board.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(AdminBoardView, self).get_context_data(**kwargs)
+        context['boards'] = Board.objects.all()
+        context['invitations'] = Invitation.objects.all()
+        context['escorts'] = Escort.objects.all()
+        return context
 
 
-class InvitationView(TemplateView):
+    def post(self, request):
+        action = request.POST.get('action', '')
+
+        if action == "createNewInvitation":
+            form = NewInvitation()
+            return render(request, 'admin/new_invitation.html', {'form': form})
+
+        elif action == "submitInvitation":
+            form = NewInvitation(request.POST)
+
+            return HttpResponse(render(request, 'admin/new_invitation.html', {'form': form}))
+
+        else:
+            return HttpResponse(status=400, content="No service available for action requested")
+
+
+class AdminInvitationView(TemplateView):
     template_name = "admin/invitation.html"
 
     def get_context_data(self, **kwargs):
 
-        context = super(InvitationView, self).get_context_data(**kwargs)
+        context = super(AdminInvitationView, self).get_context_data(**kwargs)
 
         # Cycle_id is a key. requested_cycle will be a value from key-value pair
         requested_invitation = kwargs["invitation_id"]

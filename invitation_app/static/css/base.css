@@ -46,14 +46,21 @@ header .logo {
     justify-content: space-between;
 }
 
+header .logo img {
+    height: 2em;
+    width: auto;
+}
+
 header .logo h3 {
-    margin: 0;
+    margin: .3em .3em;
 }
 
 header .account {
     display: flex;
     justify-content: space-between;
 }
+
+
 
 /*
 header .menu {

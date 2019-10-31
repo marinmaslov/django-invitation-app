@@ -2,93 +2,10 @@
 {% load staticfiles %}
 {% load invitations_tag_library %}
 {% block extra_head %}
-<link type="text/css" rel="stylesheet" href="{% static 'css/admin.css' %}"/>
+<link type="text/css" rel="stylesheet" href="{% static 'css/admin/admin.css' %}"/>
 <script src="{% static 'js/admin.js' %}"></script>
 
 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
 {% endblock %}
 {% block main_content %}
-
-
-    <section id="admin-header">
-        <div class="admin-header-container">
-            <div>
-                <p>Board</p>
-            </div>
-            <div>
-                <p>Search</p>
-            </div>
-            <div>
-                <button class="add" onclick="createNewInvitation()">Create new</button>
-                <button class="cancel" style="display:none;" onclick="cancelNewInvitation()">Cancel</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="invitations">
-
-
-
-        <div class="filters">
-            <div>
-                <p>SORT BY:</p>
-            </div>
-            <div>
-                <p>Date Created</p>
-                <p>Name</p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-            </div>
-        </div>
-
-
-        <div class="invitations-container">
-            {% block new_invitation %}
-            {% endblock %}
-
-            {% block success_message %}
-            {% endblock %}
-
-
-            {% for invitation in invitations %}
-                            <div class="invitation guest invitation_{{invitation.id}}">
-                                <div class="element first">
-                                    {% if invitation.confirmed %}
-                                        <p><i class="fas fa-check"></i></p>
-                                    {% else %}
-                                        <p><i class="fas fa-exclamation-circle"></i></p>
-                                    {% endif %}
-
-                                    {% if invitation.isFamily %}
-                                        <p><i class="fas fa-users"></i></p>
-                                    {% else %}
-                                        <p><i class="fas fa-user"></i></p>
-                                    {% endif %}
-                                </div>
-                                <div class="element">
-                                    <strong>{{invitation.created|date:"d.m.Y."}}</strong><br>
-                                    No. {{invitation.id}}
-                                </div>
-                                <div class="element">
-                                    <strong>{{invitation.name}} {{invitation.surname}}</strong><br>
-                                    {% if invitation.id|has_escort %}
-                                        Has Escort
-                                    {% else %}
-                                        Has no Escort
-                                    {% endif %}
-                                </div>
-                                <div class="element">
-                                    {{invitation.email}}<br>
-                                    {{invitation.phone|format_phone_number}}
-                                </div>
-                                <div class="element last">
-                                    <p><i class="fas fa-file-pdf"></i></p>
-                                    <a href="{% url 'invitation' %}{{ invitation.id }}"><i class="fas fa-external-link-alt"></i></a>
-                                </div>
-                            </div>
-            {% endfor %}
-        </div>
-    <section>
 {% endblock %}

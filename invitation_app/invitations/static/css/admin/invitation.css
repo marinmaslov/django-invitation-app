@@ -80,7 +80,8 @@
 
 .banner .banner-background {
     height: 150px;
-    background-image: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%);}
+    background-image: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%);
+}
 
 .banner .container {
     max-width: 900px;
@@ -130,7 +131,7 @@
 
 
 
-/* CONTROLS SECTION 
+/* CONTROLS SECTION
     MOŽDA BI ČAK UKLONIA SVE EFEKTE
 */
 .controls {

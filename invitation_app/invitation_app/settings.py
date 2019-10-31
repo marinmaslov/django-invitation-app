@@ -104,8 +104,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # url to redirect after successfull login
-LOGIN_REDIRECT_URL = '/admin/login/'
-#LOGIN_URL = '/admin/'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/admin/login/'
 
 
 # Internationalization

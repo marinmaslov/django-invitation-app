@@ -1,0 +1,90 @@
+html {
+  height: 100%;
+  background: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%);
+  background-attachment: fixed;
+}
+
+body {
+  background: unset;
+  color: #6b6e73;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+.login-box {
+  background: #fff;
+  margin: 8em auto;
+  width: 400px;
+  padding: 2em;
+  border-radius: 10px;
+  border: 1px solid #dedede;
+  box-shadow: 0 0 2px 0px rgba(0,0,0,.1);
+}
+
+.login-box .logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1em 0 3em;
+}
+
+.login-box .logo img {
+  height: 4em;
+  width: auto;
+}
+
+.login-box .logo h3 {
+  margin: .4em .3em;
+  font-size: 2em;
+}
+
+
+
+.login-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-box form h3 {
+  font-size: 1.6em;
+  text-align: center;
+}
+
+.login-box form label {
+  margin: 0 auto 1em;
+}
+
+.login-box form label input{
+  padding: .5em .5em;
+  border-radius: 10px;
+  margin: 0 10px;
+  border: none;
+  background-color: #eceff5;
+}
+
+.login-box form button {
+  background: #f78888;
+  padding: 10px;
+  border-radius: 15px;
+  color: rgb(255, 255, 255);
+  margin: 1em 6em;
+  border: 1px solid #f78888;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+}
+
+.login-box form button:hover {
+  background: #ffffff;
+  color: #6b6e73;
+  border: 1px solid #6b6e73;
+}
+
+.login-box .forgotten-password {
+  color: #6b6e73;
+  text-align: center;
+  font-size: 0.7em;
+  text-decoration: none;
+}
