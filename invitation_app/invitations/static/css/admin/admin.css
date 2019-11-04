@@ -1,0 +1,53 @@
+/* BANNER SECTION */
+.banner {
+    color: #fff;
+}
+
+.banner .banner-background {
+    height: 150px;
+    background-image: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%);
+}
+
+.banner .container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.banner .guest {
+    padding: 20px 10px;
+}
+
+.banner .guest p {
+    margin: 0;
+    font-size: .8em;
+    font-family: 'Roboto Mono', monospace;
+}
+
+
+.banner .guest h2{
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.banner .info {
+    display: flex;
+    justify-content: flex-end;
+    font-size: .8em;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.banner .info .element:first-child {
+    margin-right: 10px;
+}
+
+.banner .info i{
+    font-size: .8em;
+    width: 1.2em;
+    padding: 0.2em;
+    text-align: center;
+    line-height: 1.2em;
+    /* border: 2px solid #6b6e73; */
+    border-radius: 50%;
+    margin: 0.3em 0.1em 0.5em 0.1em;
+    transition: all .2s ease-in-out;
+}

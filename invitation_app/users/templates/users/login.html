@@ -1,0 +1,55 @@
+{% extends 'templates/base.html' %}
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block extra_head %}
+  <link type="text/css" rel="stylesheet" href="{% static 'css/login.css' %}"/>
+  <title>Invitations App | Log in</title>
+{% endblock %}
+{% block main_content %}
+<div class="login-box">
+  <div class="logo">
+      <img src="{% static 'img/logo.png' %}"/>
+      <h3 class="name">InvitationApp</h3>
+  </div>
+  <form action="" class="form-signin" method="post">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger">
+        {{ form.non_field_errors|striptags }}
+      </div>
+    {% endif %}
+    {% if not form.username.errors %}
+      <label for="user" class="form-username">
+        <i class="fas fa-user"></i>
+        <input id="id_username" name="username" type="text" class="form-control" placeholder="Username" autofocus>
+      </label>
+    {% else %}
+      <div class="form-group has-error">
+        {% for error in form.username.errors %}
+          <label class="control-label" for="id_username">{{ error }}</label>
+        {% endfor %}
+        <label for="user" class="form-username">
+          <input id="id_username" name="username" type="text" class="form-control" placeholder="Username" autofocus>
+        </label>
+      </div>
+    {% endif %}
+    {% if not form.password.errors %}
+      <label for="pass" class="form-password">
+        <i class="fas fa-key"></i>
+        <input id="id_password" name="password" type="password" class="form-control" placeholder="Password" autofocus>
+      </label>
+    {% else %}
+      <div class="form-group has-error">
+        {% for error in form.password.errors %}
+          <label class="control-label" for="id_password">{{ error }}</label>
+        {% endfor %}
+
+      </div>
+    {% endif %}
+    <button class="btn btn-primary btn-block" type="submit">Log in</button>
+  </form>
+  <a href="" class="forgotten-password"><h3>Forgotten password?</h3></a>
+</div>
+{% endblock %}

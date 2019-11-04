@@ -5,7 +5,7 @@ from django.views.generic import View, TemplateView
 from django.utils.crypto import get_random_string
 import datetime
 
-from invitations.models import Board, Invitation, Escort
+#from invitations.models import Board, Invitation, Escort
 from .forms import SlugForm, NewInvitation
 
 
@@ -28,7 +28,7 @@ def get_invitations(request):
 
     form = SlugForm()
     return render(request, 'guests/templates/slug.html', {'form': form})
-'''
+
 
 
 
@@ -154,3 +154,4 @@ class AdminInvitationView(TemplateView):
         context['escorts'] = Escort.objects.filter(invitation_id=invitation.id)
 
         return context
+'''

@@ -1,5 +1,5 @@
 from django import template
-from invitations.models import Escort
+#from invitations.models import Escort
 register = template.Library()
 
 @register.filter
