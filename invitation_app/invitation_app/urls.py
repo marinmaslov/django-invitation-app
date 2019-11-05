@@ -4,8 +4,10 @@ from django.urls import path, include
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.contrib.auth.decorators import login_required
 
+from boards.views import IndexView
 
 urlpatterns = [
+    path('', IndexView.as_view(), name='home'),
     path('', include('invitations.urls')),
     path('', include('users.urls')),
 
@@ -23,7 +25,7 @@ urlpatterns = [
     #path('admin/password_change_done/', PasswordChangeDoneView.as_view(template_name='common_templates/password_change_done.html'), name='password_change_done'),
 
 
-    path('superadmin/', admin.site.urls),
+    path('admin/super/', admin.site.urls),
 
 
 ]

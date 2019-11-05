@@ -24,3 +24,6 @@ class UserProfileView(TemplateView):
         context = super(UserProfileView, self).get_context_data(**kwargs)
         context['invitations'] = "Invitation.objects.all()"
         return context
+
+
+
