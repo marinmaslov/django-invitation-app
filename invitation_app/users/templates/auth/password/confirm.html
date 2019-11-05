@@ -1,0 +1,24 @@
+{% extends 'templates/base.html' %}
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block extra_head %}
+  <link type="text/css" rel="stylesheet" href="{% static 'css/auth/login.css' %}"/>
+  <title>Invitations App | Log in</title>
+{% endblock %}
+{% block main_content %}
+<div class="login-box">
+  <div class="logo">
+      <img src="{% static 'img/logo.png' %}"/>
+      <h3 class="name">InvitationApp</h3>
+  </div>
+  <form class="form-signin" method="POST">
+    {% csrf_token %}
+    <fieldset>
+        {{ form }}
+    </fieldset>
+    <button type="submit">Change my password</button>
+  </form>
+</div>
+{% endblock %}

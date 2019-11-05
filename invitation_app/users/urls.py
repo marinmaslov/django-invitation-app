@@ -4,12 +4,19 @@ from django.contrib.auth.decorators import login_required
 
 from .views import register, UserProfileView
 
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView
 
 urlpatterns = [
-    path('register/', register, name='register'),
-    path('login', LoginView.as_view(template_name='users/login.html'), name='login'),
-    path('logout', LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    # Authentication urls
+    path('a/register/', register, name='register'),
+    path('a/login/', LoginView.as_view(template_name='auth/login.html'), name='login'),
+    path('a/logout/', LogoutView.as_view(template_name='auth/logout.html'), name='logout'),
 
-    path('users/<slug:username>', login_required(UserProfileView.as_view()), name='profile'),
+    path('a/password-reset/', PasswordResetView.as_view(template_name='auth/password/reset.html'), name='password_reset'),
+    path('a/password-reset/done/', PasswordResetDoneView.as_view(template_name='auth/password/done.html'), name='password_reset_done'),
+    path('a/password-reset/confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name='auth/password/confirm.html'), name='password_reset_confirm'),
+    path('a/password-reset/complete/', PasswordResetCompleteView.as_view(template_name='auth/password/complete.html'), name='password_reset_complete'),
+
+
+    path('u/<slug:username>/', login_required(UserProfileView.as_view()), name='profile'),
 ]

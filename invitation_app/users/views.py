@@ -12,10 +12,15 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            return redirect('/users/' + username)
+            return redirect('/u/' + username)
     else:
         form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+    return render(request, 'auth/register.html', {'form': form})
+
+
+
+
+
 
 class UserProfileView(TemplateView):
     template_name = 'users/profile.html'

@@ -24,6 +24,10 @@ html, body {
   box-shadow: 0 0 2px 0px rgba(0,0,0,.1);
 }
 
+.login-box h3, p {
+  text-align: center;
+}
+
 .login-box .logo {
   display: flex;
   flex-direction: row;
@@ -74,6 +78,7 @@ html, body {
   border: 1px solid #f78888;
   transition: all .2s ease-in-out;
   cursor: pointer;
+  font-size: .8em;
 }
 
 .login-box form button:hover {
@@ -87,4 +92,23 @@ html, body {
   text-align: center;
   font-size: 0.7em;
   text-decoration: none;
+}
+
+.login-box .button-hollow {
+  background: #fff;
+  padding: 10px;
+  border-radius: 15px;
+  color: #6b6e73;
+  margin: 0 6em 1em;
+  border: 1px solid #6b6e73;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-size: .8em;
+}
+
+.login-box .button-hollow:hover {
+  background: #f2f5fa;
+  border: 1px solid #c2c5ca;
 }

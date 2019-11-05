@@ -60,3 +60,7 @@ LOGGING = {
 }
 
 STATIC_URL = '/static/'
+
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = '1025'
