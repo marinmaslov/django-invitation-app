@@ -1,12 +1,13 @@
 {% extends 'auth/login_base.html' %}
 {% load staticfiles %}
 
+{% block extra_title %} | Changed password successfully{% endblock %}
+
 {% block extra_head %}
   <link type="text/css" rel="stylesheet" href="{% static 'css/auth/login.css' %}"/>
-  <title>Invitatio | Log out</title>
 {% endblock %}
 
 {% block login_content %}
-      <h3 class="form-signin-heading text-center">You're logged out!</h3>
-      <a href="{% url 'login' %}" class="button-hollow">Log in</a>
+    <h3>Password reset complete</h3>
+    <p>Your password has been set.</p>
 {% endblock %}

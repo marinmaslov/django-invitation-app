@@ -1,0 +1,12 @@
+{% extends 'boards/templates/base/base.html' %}
+{% load staticfiles %}
+{% block main_content %}
+<div class="login-box">
+    <div class="logo">
+        <img src="{% static 'img/logo.png' %}"/>
+        <h3 class="name">Epistoleus</h3>
+    </div>
+    {% block login_content %}
+    {% endblock %}
+</div>
+{% endblock %}
