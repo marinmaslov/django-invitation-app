@@ -34,3 +34,13 @@ class IndexView(TemplateView):
                 else:
                     return render(request, "base/index.html", {'form': form})
 
+
+
+class UserProfileView(TemplateView):
+    template_name = 'users/profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(UserProfileView, self).get_context_data(**kwargs)
+        context['invitations'] = "Invitation.objects.all()"
+        return context
+

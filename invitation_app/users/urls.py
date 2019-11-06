@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.contrib.auth.decorators import login_required
 
-from .views import register, UserProfileView
+from .views import register#, UserProfileView
 
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView, PasswordChangeView, PasswordChangeDoneView
 
@@ -20,5 +20,5 @@ urlpatterns = [
     path('a/password/change/', PasswordChangeView.as_view(template_name='auth/password/change/change.html'), name='password_change'),
     path('a/password/change/done', PasswordChangeDoneView.as_view(template_name='auth/password/change/done.html'), name='password_change_done'),
 
-    path('u/<slug:username>/', login_required(UserProfileView.as_view()), name='profile'),
+    #path('u/profile/<slug:username>/', login_required(UserProfileView.as_view()), name='profile'),
 ]

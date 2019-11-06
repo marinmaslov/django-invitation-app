@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <link type="text/css" rel="stylesheet" href="{% static 'css/base.css' %}"/>
   
+  <script src="{% static 'js/base.js' %}"></script>
   {% block extra_head %}{% endblock %}
 </head>
 <body>
@@ -23,19 +24,27 @@
 
 <div id="loading"></div>
 <header>
-    <div class="logo">
+    <a href="/" class="logo">
         <img src="{% static 'img/logo.png' %}"/>
         <h3 class="name">Epistoleus</h3>
-    </div>
-    <div class="account">
+    </a>
+    <!-- Menu -->
+    <div class="menu-desktop">
+        <a href="/" class="button">Home</a>
+        <a href="/about/" class="button">About us</a>
+        <a href="/contacts/" class="button">Contacts</a>
       {% if user.is_authenticated %}
-        <a><i class="fas fa-cog"></i></a>
-        <img />
-        <a><i class="fas fa-chevron-down"></i></a>
-        <a href="/a/logout/"><i class="fas fa-sign-out-alt"></i></a>
+        <div class="dropdown">
+          <button onclick="toggleDropdown()" class="button-drop">Admin <i class="fas fa-caret-down"></i></button>
+          <div id="dropdown" class="dropdown-content">
+            <a href="{% url 'dashboard' username=user.username%}">Dashboard</a>
+            <a href="{% url 'boards' username=user.username%}">Boards</a>
+            <a href="/a/password/change/">Change password</a>
+            <a href="/a/logout/">Log out</a>
+          </div>
+        </div>
       {% else %}
-        <a href="/a/login/"><i class="fas fa-sign-in-alt"></i></a>
-
+        <a href="/a/login/" class="button-login" style="margin-left:10px;">Log in</i></a>
       {% endif %}
     </div>
 </header>

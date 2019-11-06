@@ -17,12 +17,7 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'auth/register.html', {'form': form})
 
-
-
-
-
-
-class UserProfileView(TemplateView):
+""" class UserProfileView(TemplateView):
     template_name = 'users/profile.html'
 
     def get_context_data(self, **kwargs):
@@ -30,5 +25,4 @@ class UserProfileView(TemplateView):
         context['invitations'] = "Invitation.objects.all()"
         return context
 
-
-
+ """

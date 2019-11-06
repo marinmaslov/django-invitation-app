@@ -1,0 +1,190 @@
+:root {
+    --main-pink: #fc8f9b;
+    --white: #fff;
+
+}
+
+:focus {
+    outline: none;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    background:#F2F5FA;
+}
+
+#loading {
+    background: #F6F3E2 url("../img/loading.gif") no-repeat scroll center;
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 101;
+    opacity: .55;
+    background-size: 35%;
+    height: 100%;
+    display:none;
+}
+
+header {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    color: #6b6e73;
+    padding:20px;
+    border-bottom: 1px solid #cacaca;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .2);
+}
+
+header .logo {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+}
+
+header .logo img {
+    height: 2em;
+    width: auto;
+}
+
+header .logo h3 {
+    margin: .3em .3em;
+    color: #6b6e73;
+    font-size: 1.17em;
+    font-weight: bold;
+}
+
+header .menu-desktop {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+header .button-login {
+    background: #f78888;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 20px;
+    color:#fff;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    font-size: 1em;
+}
+
+header .button-login  a{
+    text-decoration: none;
+    color:#fff;
+}
+
+header .button-login :hover {
+    background: #ffa2a2;
+    color:#fff;
+}
+
+header .button {
+    color: #6b6e73;
+    text-decoration: none;
+    padding: 7px 14px;
+    transition: all 0.2s ease-in-out;
+    border-radius: 20px;
+    margin: 0 10px;
+    font-size: 1em;
+}
+
+header .button:hover {
+    background: #e8f0fe;
+}
+
+
+/* HEADER DROPDOWN */
+.button-drop {
+    background: #f78888;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 20px;
+    color:#fff;
+    text-decoration: none;
+    font-size: 1em;
+    margin-left:10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.button-drop:hover, .button-drop:focus {
+    background: #ffa2a2;
+    color:#fff;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 180px;
+    z-index: 1;
+    right: 0;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: .25rem;
+    margin: .125rem 0 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.dropdown-content a:nth-child(3) {
+    border-top: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+
+.dropdown-content a {
+    color: #6b6e73;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: all 0.2s ease-in-out;
+}
+
+.dropdown-content a:hover {
+    background-color: #e8f0fe;
+}
+
+.show {
+    display:block;
+}
+
+
+#message {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    display: none;
+}
+
+#message .box {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#message .box p {
+    padding: 30%;
+    font-size: 2em;
+    color: #6b6e73;
+    font-weight: bold;
+}

@@ -43,6 +43,7 @@ html, body {
 .login-box .logo h3 {
   margin: .4em .3em;
   font-size: 2em;
+  font-weight: bold;
 }
 
 
@@ -117,4 +118,40 @@ html, body {
 .login-box .button-hollow:hover {
   background: #f2f5fa;
   border: 1px solid #c2c5ca;
+}
+
+
+.login-box span {
+    padding: 0 5px 20px;
+    font-size: .9em;
+}
+
+.login-box .helptext li{
+  margin: 5px 0;
+}
+
+/* BRISATI */
+.login-box .helpbox{
+  margin: 0 0 2.4em;
+}
+
+.login-box .helpbox i{
+  color: #f78888;
+}
+
+
+
+
+
+
+
+
+.login-box .errorbox {
+    font-size: .8em;
+    margin: 0 auto;
+    padding: 0 0 .5em 1.4em;
+}
+
+.login-box .errorbox i{
+  color: #f78888;
 }
